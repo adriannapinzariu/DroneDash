@@ -3,4 +3,5 @@
 # project pitch
 # frontend
 # backend
-# 
+# functional reqs
+# nonfunctional reqs
