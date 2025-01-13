@@ -38,7 +38,9 @@
 - Power supply for the Pi and motors.
 
 # functional reqs
-
+- Users should be able to schedule deliveries by selecting pickup and drop-off locations, track the robot’s movement via live map, receive notifications about delivery status i.e. "Delivery Started" and "Delivery Completed".
+- Raspberry Pi Robot should navigate autonomously along predefined paths, avoid obstacles detected by its sensors, log all completed deliveries, and log all time and route details in the database.
+- Administrators should be able to monitor and update robot routes through the backend, optimize navigation for new locations or conditions, and review delivery logs for troubleshooting.
 
 # nonfunctional reqs
 
