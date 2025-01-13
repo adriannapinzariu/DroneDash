@@ -41,3 +41,12 @@
 
 
 # nonfunctional reqs
+
+- Performance:
+  - The platform should load within 2 seconds for 95% of users, even during peak traffic periods such as holidays or major events.
+- Security:
+  - All sensitive user data, including payment information, must be encrypted using AES-256 encryption to ensure data confidentiality and integrity.
+- Usability:
+  - The user interface should achieve a User Satisfaction Score of at least 85% for ease of use, based on surveys or user feedback.
+- Scalability:
+  - The system should support up to 100 users with minimal performance degradation during high-demand periods.
