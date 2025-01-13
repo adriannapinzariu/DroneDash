@@ -1,4 +1,4 @@
-# CSC396_Sample
+# Autonomous Delivery Robot for College Campus Deliveries
 
 # team members
 - Adrianna Pinzariu
