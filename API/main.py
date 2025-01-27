@@ -120,7 +120,7 @@ async def get_all_robots():
 @app.post("/robots")
 async def create_new_robot():
     new_robot = {
-    	"id": 3, 
+    	"id": len(robots) + 1, 
     	"current_location": { 
             "latitude": 41.4573, 
             "longitude": -87.0299, 
@@ -139,13 +139,13 @@ async def get_robot_by_id(id: int):
         if robot["id"] == id:
             return robot
 
-# Delete Delivery by ID
-@app.delete("/deliveries/{id}")
-async def delete_delivery_by_id(id: int):
-    for delivery in deliveries:
-        if delivery["id"] == id:
-            deliveries.remove(delivery)
-            return delivery 
+# Delete Robot by ID
+@app.delete("/robots/{id}")
+async def delete_robot_by_id(id: int):
+    for robot in robots:
+        if robot["id"] == id:
+            robots.remove(robot)
+            return robot 
 
 # Someone help me with update please
 
