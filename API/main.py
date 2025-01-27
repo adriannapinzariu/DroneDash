@@ -45,6 +45,12 @@ async def get_all_deliveries():
     deliveries.append(new_delivery)
     return deliveries
 
+# Get Delivery by ID
+@app.get("/deliveries/{id}")
+async def get_delivery_by_id(id: int):
+    for delivery in deliveries:
+        if delivery["id"] == id:
+            return delivery
 
 
 '''
