@@ -52,6 +52,13 @@ async def get_delivery_by_id(id: int):
         if delivery["id"] == id:
             return delivery
 
+# Delete Delivery by ID
+@app.delete("/deliveries/{id}")
+def delete_delivery_by_id(id: int):
+    for delivery in deliveries:
+        if delivery["id"] == id:
+            deliveries.remove(delivery)
+            return delivery 
 
 '''
 
