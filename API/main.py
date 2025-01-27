@@ -104,32 +104,15 @@ async def delete_delivery_by_id(id: int):
             deliveries.remove(delivery)
             return delivery 
 
-# Someone help me with update please
-'''
-# Update a Delivery by ID
+# Update Delivery by ID
 @app.patch("/deliveries/{id}")
-async def update_delivery_by_id(id: int):
-    # get deliveries list and id
-    # go and check which one is different
+async def update_delivery_by_id(id: int, updates: dict):
     for delivery in deliveries:
         if delivery["id"] == id:
-            updated_delivery = {
-                "id": delivery["id"], # update this in documentation
-                "pickup_location": {
-                    "name": "Library",
-                    "latitude": 41.9250,
-                    "longitude": -87.6500
-                },
-                "dropoff_location": {
-                    "name": "Student Center",
-                    "latitude": 41.9200,
-                    "longitude": -87.6600
-                },
-                "status": "Completed", # changed to completed
-                "distance": 0.75,
-                "delivery_time": "2025-01-26T15:05:00"
-            }
-        '''    
+            for key, value in updates.items():
+                if key in delivery:
+                    delivery[key] = value
+            return delivery
 
 # Get All Robots
 @app.get("/robots")
