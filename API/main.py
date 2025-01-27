@@ -19,7 +19,7 @@ deliveries = [
 
 robots = [
     {
-        "id": 1,
+        "id": next_id,
         "current_location": {
             "latitude": 41.9249,
             "longitude": -87.6553
@@ -29,7 +29,7 @@ robots = [
         "max_load": 25.0
     },
     {
-        "id": 2,
+        "id": (next_id + 1),
         "current_location": {
             "latitude": 41.9228,
             "longitude": -87.6535
@@ -47,7 +47,7 @@ async def get_all_deliveries():
 
 # Create a New Delivery
 @app.post("/deliveries")
-async def get_all_deliveries():
+async def create_new_delivery():
     global next_id
     next_id += 1
     new_delivery = {
@@ -111,11 +111,26 @@ async def update_delivery_by_id(id: int):
             }
         '''    
 
-# Get All Deliveries
+# Get All Robots
 @app.get("/robots")
 async def get_all_robots():
     return robots
 
+# Create a New Robot
+@app.post("/robots")
+async def create_new_robot():
+    new_robot = {
+    	"id": 3, 
+    	"current_location": { 
+            "latitude": 41.4573, 
+            "longitude": -87.0299, 
+        },
+    	"status": "Available", 
+    	"battery": 100.0,
+    	"max_load": 50.0 
+    }
+    robots.append(new_robot)
+    return robots
 
 '''
 
