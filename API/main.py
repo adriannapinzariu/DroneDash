@@ -174,6 +174,20 @@ async def delete_robot_by_id(id: int):
 async def get_all_users():
     return users
 
+# Create a New User
+@app.post("/users")
+async def create_new_user():
+    new_user = {
+        "id": len(users) + 1,
+        "full_name": "John Smith",
+        "username": "jsmith",
+        "email": "“jsmith@depaul.edu",
+        "role": "Student",
+    }
+    users.append(new_user)
+    return users
+
+
 '''
 
 static_string = "Initial test"
