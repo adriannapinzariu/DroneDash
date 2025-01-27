@@ -2,6 +2,18 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
+deliveries = [
+    {
+        "id": 1,
+        "pickup_location": {"name": "Library", "latitude": 41.9249, "longitude": -87.6553},
+        "dropoff_location": {"name": "Student Center", "latitude": 41.9228, "longitude": -87.6535},
+        "status": "Completed",
+        "distance": 0.30,
+        "delivery_time": "2025-01-26T15:05:00"
+    }
+]
+
+
 '''
 
 static_string = "Initial test"
