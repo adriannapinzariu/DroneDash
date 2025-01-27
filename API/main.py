@@ -167,7 +167,15 @@ async def delete_robot_by_id(id: int):
             robots.remove(robot)
             return robot # is it supposed to return what we delete?
 
-# Someone help me with update please
+# Update Robot by ID
+@app.patch("/robots/{id}")
+async def update_robot_by_id(id: int, updates: dict):
+    for robot in robots:
+        if robot["id"] == id:
+            for key, value in updates.items():
+                if key in robot:
+                    robot[key] = value
+            return robot
 
 # Get All Users
 @app.get("/users")
