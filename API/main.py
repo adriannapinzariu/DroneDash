@@ -2,9 +2,12 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
+deliveries = []
+next_id = 1
+
 deliveries = [
     {
-        "id": 1,
+        "id": next_id,
         "pickup_location": {"name": "Library", "latitude": 41.9249, "longitude": -87.6553},
         "dropoff_location": {"name": "Student Center", "latitude": 41.9228, "longitude": -87.6535},
         "status": "Completed",
@@ -13,9 +16,35 @@ deliveries = [
     }
 ]
 
+# Get All Deliveries
 @app.get("/deliveries")
 def get_all_deliveries():
     return deliveries
+
+# Create a New Delivery
+@app.post("/deliveries")
+async def get_all_deliveries():
+    global next_id
+    next_id += 1
+    new_delivery = {
+        "id" : next_id, #can you guys fix this in the documentation
+        "pickup_location": {
+            "name": "DePaul Art Museum",
+            "latitude": 41.9252,
+            "longitude": -87.6527
+        },
+        "dropoff_location": {
+            "name": "Wish Field",
+            "latitude": 41.9220,
+            "longitude": -87.6565
+        },
+        "status": "Scheduled", #can you guys fix this in the documentation
+        "distance": 0.25,
+        "delivery_time": "2025-01-26T14:30:00" 
+    }
+    deliveries.append(new_delivery)
+    return deliveries
+
 
 
 '''
