@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 
+# NOTE: We should probably randomize ID or something instead of numerical bc that can mix things up
+
 app = FastAPI()
 
 deliveries = []
@@ -145,7 +147,7 @@ async def delete_robot_by_id(id: int):
     for robot in robots:
         if robot["id"] == id:
             robots.remove(robot)
-            return robot 
+            return robot # is it supposed to return what we delete?
 
 # Someone help me with update please
 
