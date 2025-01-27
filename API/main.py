@@ -5,6 +5,7 @@ app = FastAPI()
 deliveries = []
 next_id = 1
 
+# Mock Data
 deliveries = [
     {
         "id": next_id,
@@ -13,6 +14,29 @@ deliveries = [
         "status": "Completed",
         "distance": 0.30,
         "delivery_time": "2025-01-26T15:05:00"
+    }
+]
+
+robots = [
+    {
+        "id": 1,
+        "current_location": {
+            "latitude": 41.9249,
+            "longitude": -87.6553
+        },
+        "status": "Available",
+        "battery": 95.5,
+        "max_load": 25.0
+    },
+    {
+        "id": 2,
+        "current_location": {
+            "latitude": 41.9228,
+            "longitude": -87.6535
+        },
+        "status": "In Progress",
+        "battery": 99.9,
+        "max_load": 50.0
     }
 ]
 
@@ -86,6 +110,12 @@ async def update_delivery_by_id(id: int):
                 "delivery_time": "2025-01-26T15:05:00"
             }
         '''    
+
+# Get All Deliveries
+@app.get("/robots")
+async def get_all_robots():
+    return robots
+
 
 '''
 
