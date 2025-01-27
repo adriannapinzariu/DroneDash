@@ -42,6 +42,24 @@ robots = [
     }
 ]
 
+users = [
+    {
+    	"id": 1, 
+	    "full_name": "Vincent DePaul", 
+        "username": "VDepaul", 
+        "email": "VDepaul@depaul.edu",
+        "role": "Student", 
+        },
+        {
+        "id": 2, 
+        "full_name": "Robert Manuel", 
+        "username": "PrezDePaul",
+        "email": "prezdepaul@depaul.edu", 
+        "role": "Admin",
+        }
+]
+
+
 # Get All Deliveries
 @app.get("/deliveries")
 async def get_all_deliveries():
