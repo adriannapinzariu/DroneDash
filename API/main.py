@@ -202,30 +202,12 @@ async def delete_user_by_id(id: int):
             users.remove(user)
             return user
 
-# Someone help me with update please
-
-'''
-
-static_string = "Initial test"
-
-listUsers = { "Name": "Adrianna", "id" : 1 }, { "Name": "hehe", "id" : 2 }
-
-@app.get("/user")
-async def root():
-    return listUsers
-
-# use post to add data
-@app.post("/user")
-async def root(name: str = 0):
-    listUsers.append({"name":name, "id": 3})
-    return listUsers
-
-@app.get("/")
-async def hello(name: str):
-    return {"Message": "Congrats! " + name + " This is your first API!"}
-
-@app.get("/test")
-async def read_root():
-    return {"Message": "Congrats! This is your first API!"}
-
-'''
+# Update User by ID
+@app.patch("/users/{id}")
+async def update_user_by_id(id: int, updates: dict):
+    for user in users:
+        if user["id"] == id:
+            for key, value in updates.items():
+                if key in user:
+                    user[key] = value
+            return user
