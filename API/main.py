@@ -169,6 +169,10 @@ async def delete_robot_by_id(id: int):
 
 # Someone help me with update please
 
+# Get All Users
+@app.get("/users")
+async def get_all_users():
+    return users
 
 '''
 
