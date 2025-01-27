@@ -1,5 +1,13 @@
 # Autonomous Delivery Robot for College Campus Deliveries
 
+# Commands to Run Repo
+git clone https://github.com/adriannapinzariu/CSC396_Sample.git
+cd API
+python3 -m venv env
+source env/bin/activate 
+pip install fastapi uvicorn (if this doesn't work on vscode change your python interpreter)
+uvicorn main:app --reload
+
 # team members
 - Adrianna Pinzariu
 - Jeremiah Mustapha
