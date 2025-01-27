@@ -187,6 +187,14 @@ async def create_new_user():
     users.append(new_user)
     return users
 
+# Get User by ID
+@app.get("/users/{id}")
+async def get_user_by_id(id: int):
+    for user in users:
+        if user["id"] == id:
+            return user
+
+
 
 '''
 
