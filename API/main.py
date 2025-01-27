@@ -132,6 +132,24 @@ async def create_new_robot():
     robots.append(new_robot)
     return robots
 
+# Get Robot by ID
+@app.get("/robots/{id}")
+async def get_robot_by_id(id: int):
+    for robot in robots:
+        if robot["id"] == id:
+            return robot
+
+# Delete Delivery by ID
+@app.delete("/deliveries/{id}")
+async def delete_delivery_by_id(id: int):
+    for delivery in deliveries:
+        if delivery["id"] == id:
+            deliveries.remove(delivery)
+            return delivery 
+
+# Someone help me with update please
+
+
 '''
 
 static_string = "Initial test"
