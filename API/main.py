@@ -13,6 +13,10 @@ deliveries = [
     }
 ]
 
+@app.get("/deliveries")
+def get_all_deliveries():
+    return deliveries
+
 
 '''
 
