@@ -194,7 +194,15 @@ async def get_user_by_id(id: int):
         if user["id"] == id:
             return user
 
+# Delete User by ID
+@app.delete("/users/{id}")
+async def delete_user_by_id(id: int):
+    for user in users:
+        if user["id"] == id:
+            users.remove(user)
+            return user
 
+# Someone help me with update please
 
 '''
 
