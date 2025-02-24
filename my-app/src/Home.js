@@ -16,8 +16,6 @@ function Home() {
         <div className="main-content">
           <CategoryBar />
           <FilterBar />
-          <h1>Welcome to DroneDash</h1>
-          <p>Browse categories and find your favorite meals.</p>
         </div>
       </div>
     </div>
