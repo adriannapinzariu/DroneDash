@@ -1,6 +1,9 @@
 import React from "react";
-import Sidebar from "./Sidebar";
+
 import Header from "./Header";
+import Sidebar from "./Sidebar";
+import CategoryBar from "./CategoryBar";
+
 import "./Home.css"; 
 
 function Home() {
@@ -10,6 +13,7 @@ function Home() {
       <div className="content-container">
         <Sidebar /> 
         <div className="main-content">
+          <CategoryBar />
           <h1>Welcome to DroneDash</h1>
           <p>Browse categories and find your favorite meals.</p>
         </div>
