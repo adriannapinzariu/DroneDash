@@ -1,0 +1,46 @@
+.promo-banner {
+    display: flex;
+    gap: 15px;
+    padding: 15px 20px;
+    overflow-x: auto;
+
+  }
+  
+  .promo-card {
+    flex: 0 0 auto;
+    width: 400px;
+    padding: 20px;
+    border-radius: 15px;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .light-green {
+    background-color: #d1e7d3;
+  }
+  
+  .dark-blue {
+    background-color: #007272;
+    color: white;
+  }
+  
+  .promo-button {
+    margin-top: 10px;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .promo-button.white {
+    background-color: white;
+    color: #007272;
+  }
+  
+  .promo-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
