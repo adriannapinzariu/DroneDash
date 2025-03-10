@@ -21,6 +21,7 @@ function RestaurantPage() {
         <Header />
 
         <div className="restaurant-page">
+        
           <div className="restaurant-header">
             <img src={restaurant.image} alt={restaurant.name} className="restaurant-img" />
             <div className="restaurant-logo">
@@ -28,8 +29,23 @@ function RestaurantPage() {
             </div>
           </div>
 
-          <div className="restaurant-info">
-            <h1>{restaurant.name}</h1>
+
+
+          <div className="restaurant-content">
+            {/* Name & Search Bar */}
+            <div className="restaurant-header-section">
+              <h1 className="restaurant-title">{restaurant.name}</h1>
+              <div className="restaurant-search">
+                <span className="search-icon">🔍</span>
+                <input 
+                  type="text" 
+                  placeholder={`Search ${restaurant.name}...`} 
+                  className="search-bar"
+                />
+              </div>
+            </div>
+
+
             <div className="store-info">
             <h2 className="store-info-title">Store Info</h2>
               {restaurant.dashPass && <p className="dash-pass">🚀 DashPass</p>}
