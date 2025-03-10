@@ -63,7 +63,58 @@
     color: #555;
   }
   
-  /* Delivery Options */
+
+.store-info {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+    width: 255px;
+  }
+  
+  .store-info-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .store-info p {
+    margin: 5px 0;
+  }
+  
+  .dash-pass {
+    color: #0085ff;
+    font-weight: bold;
+  }
+  
+  .status {
+    color: #4caf50;
+    font-weight: bold;
+  }
+  
+  .open-status {
+    color: #4caf50;
+    font-weight: bold;
+  }
+  
+  .see-more {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .see-more:hover {
+    background-color: #f5f5f5;
+  }
+
+  
   .delivery-details {
     display: flex;
     gap: 10px;
@@ -89,7 +140,6 @@
     background-color: white;
     border: 1px solid black;
   }
-  
 
   .deals {
     background-color: #ffefef;

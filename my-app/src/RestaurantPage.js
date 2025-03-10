@@ -30,11 +30,15 @@ function RestaurantPage() {
 
           <div className="restaurant-info">
             <h1>{restaurant.name}</h1>
-            <p>⭐ {restaurant.rating} ({restaurant.reviews} ratings) • {restaurant.cuisine} • {restaurant.distance}</p>
-            <div className="tags">
-              {restaurant.friendlyTags.map((tag, index) => (
-                <span key={index} className="tag">{tag}</span>
-              ))}
+            <div className="store-info">
+            <h2 className="store-info-title">Store Info</h2>
+              {restaurant.dashPass && <p className="dash-pass">🚀 DashPass</p>}
+              <p className="status">
+                ⏰ <span className="open-status">{restaurant.status}</span> • Closes at {restaurant.closingTime}
+              </p>
+              <p>⭐ {restaurant.rating} ({restaurant.reviews}) • {restaurant.distance}</p>
+              <p>{restaurant.price} • {restaurant.cuisine}</p>
+              <button className="see-more">See More</button>
             </div>
 
             <div className="delivery-details">
