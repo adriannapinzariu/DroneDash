@@ -1,5 +1,13 @@
-.restaurant-layout {
+.page-container {
     display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.content-layout {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden;
 }
 
 .sidebar {
@@ -7,15 +15,10 @@
     flex-shrink: 0;
 }
 
-.main-content {
+.restaurant-page {
     flex-grow: 1;
     padding: 20px;
-}
-
-.restaurant-page {
-    max-width: 1000px;
-    margin: auto;
-    font-family: Arial, sans-serif;
+    overflow-y: auto;
 }
 
 .restaurant-header {

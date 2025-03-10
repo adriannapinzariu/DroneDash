@@ -14,11 +14,11 @@ function RestaurantPage() {
   }
 
   return (
-    <div className="restaurant-layout">
-      <Sidebar />
+    <div className="page-container">
+      <Header />
 
-      <div className="main-content">
-        <Header />
+      <div className="content-layout">
+        <Sidebar />
 
         <div className="restaurant-page">
         
