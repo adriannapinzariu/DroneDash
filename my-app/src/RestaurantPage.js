@@ -76,7 +76,9 @@ function RestaurantPage() {
                     <p className="fee-price">{restaurant.fee}</p>
                     <p className="fee-text">pricing & fees</p>
                 </div>
-                
+
+                <div className="divider"></div>
+
                 <div className="delivery-time">
                     <p className="time-price">{restaurant.deliveryTime}</p>
                     <p className="time-text">delivery time</p>
