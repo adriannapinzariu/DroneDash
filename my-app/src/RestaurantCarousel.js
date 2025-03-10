@@ -38,6 +38,10 @@ const restaurants = [
   },
 ];
 
+const openRestaurantTab = (id) => {
+    window.open(`/restaurant/${id}`, "_blank", "noopener,noreferrer");
+  };  
+
 function RestaurantCarousel() {
   return (
     <div className="restaurant-carousel">
@@ -47,7 +51,7 @@ function RestaurantCarousel() {
       </div>
       <div className="carousel">
         {restaurants.map((restaurant, index) => (
-          <div key={index} className="restaurant-card">
+            <div key={restaurant.id} className="restaurant-card" onClick={() => openRestaurantTab(restaurant.id)}>
             <img src={restaurant.image} alt={restaurant.name} className="restaurant-image" />
             <div className="restaurant-info">
               <h3>{restaurant.name}</h3>
