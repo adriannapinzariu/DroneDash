@@ -15,14 +15,11 @@ function RestaurantPage() {
 
   return (
     <div className="restaurant-layout">
-      {/* Sidebar */}
       <Sidebar />
 
       <div className="main-content">
-        {/* Header */}
         <Header />
 
-        {/* Restaurant Page Content */}
         <div className="restaurant-page">
           <div className="restaurant-header">
             <img src={restaurant.image} alt={restaurant.name} className="restaurant-img" />

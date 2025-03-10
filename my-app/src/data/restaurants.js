@@ -12,7 +12,7 @@ export const restaurantData = {
       dashPass: true,
       friendlyTags: ["Healthy", "Vegetarian Options"],
       image: "/food_1.avif",
-      logo: "/images/xenia_logo.png",
+      logo: "/poke.jpeg",
     },
     "poke-burrito": {
       name: "Poke Burrito",
@@ -27,7 +27,7 @@ export const restaurantData = {
       dashPass: true,
       friendlyTags: ["Pescatarian Friendly"],
       image: "/food_2.avif",
-      logo: "/images/poke_burrito_logo.png",
+      logo: "/poke.jpeg",
     },
     "raising-canes": {
       name: "Raising Cane's",
@@ -42,7 +42,7 @@ export const restaurantData = {
       dashPass: false,
       friendlyTags: ["Fast Food", "Chicken"],
       image: "/food_3.avif",
-      logo: "/images/raising_canes_logo.png",
+      logo: "/poke.jpeg",
     },
   };
   
