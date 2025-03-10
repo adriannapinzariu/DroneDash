@@ -45,32 +45,46 @@ function RestaurantPage() {
               </div>
             </div>
 
+            <div className="restaurant-info-container">
 
-            <div className="store-info">
-            <h2 className="store-info-title">Store Info</h2>
-              {restaurant.dashPass && <p className="dash-pass">🚀 DashPass</p>}
-              <p className="status">
-                ⏰ <span className="open-status">{restaurant.status}</span> • Closes at {restaurant.closingTime}
-              </p>
-              <p>⭐ {restaurant.rating} ({restaurant.reviews}) • {restaurant.distance}</p>
-              <p>{restaurant.price} • {restaurant.cuisine}</p>
-              <button className="see-more">See More</button>
+                <div className="store-info">
+                    <h2 className="store-info-title">Store Info</h2>
+                    {restaurant.dashPass && <p className="dash-pass">🚀 DashPass</p>}
+                    <p className="status">
+                        ⏰ <span className="open-status">{restaurant.status}</span> • Closes at {restaurant.closingTime}
+                    </p>
+                    <p>⭐ {restaurant.rating} ({restaurant.reviews}) • {restaurant.distance}</p>
+                    <p>{restaurant.price} • {restaurant.cuisine}</p>
+                    <button className="see-more">See More</button>
+                </div>
+
+                            
+ 
+
+
+                <div className="delivery-fee-container">
+
+                <div className="delivery-options">
+                    <div className="buttons">
+                        <button className="delivery-option active">Delivery</button>
+                        <button className="pickup-option">Pickup</button>
+                        <button className="group-order">Group Order</button>
+                    </div>
+                </div>
+
+                <div className="delivery-fee">
+                    <p className="fee-price">{restaurant.fee}</p>
+                    <p className="fee-text">pricing & fees</p>
+                </div>
+                
+                <div className="delivery-time">
+                    <p className="time-price">{restaurant.deliveryTime}</p>
+                    <p className="time-text">delivery time</p>
+                </div>
+                </div>
+
             </div>
 
-            <div className="delivery-details">
-              <button className="delivery-option">Delivery</button>
-              <button className="pickup-option">Pickup</button>
-              <button className="group-order">Group Order</button>
-              <div className="delivery-fee">
-                {restaurant.fee} <span>{restaurant.deliveryTime} delivery time</span>
-              </div>
-            </div>
-
-            {restaurant.deals && (
-              <div className="deals">
-                <p>🔥 {restaurant.deals}</p>
-              </div>
-            )}
           </div>
         </div>
       </div>
