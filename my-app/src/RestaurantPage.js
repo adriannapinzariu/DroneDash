@@ -59,7 +59,7 @@ function RestaurantPage() {
                 </div>
 
                             
- 
+                <div className="delivery-wrapper">
 
 
                 <div className="delivery-fee-container">
@@ -85,9 +85,27 @@ function RestaurantPage() {
                 </div>
                 </div>
 
+              
+            <div className="deals-section">
+                <h3 className="deals-title">Deals & benefits</h3>
+                <div className="deal-box">
+                    <div className="deal-content">
+                        <span className="deal-icon">🚀</span> 
+                        <p className="deal-text"><strong>Get $0 delivery fees with DashPass</strong><br/>
+                        Plus, low service fees. Sign up now</p>
+                    </div>
+                    <button className="sign-up-button">Sign Up ↗</button>
+                </div>
             </div>
 
+            </div>
+
+
+            </div>   
           </div>
+
+
+
         </div>
       </div>
     </div>
