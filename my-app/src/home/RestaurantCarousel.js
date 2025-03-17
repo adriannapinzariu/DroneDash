@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { restaurantData } from "../data/restaurants";
 import "./RestaurantCarousel.css";
 
+const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
+
 const openRestaurantTab = (id) => {
   window.open(`/restaurant/${id}`, "_blank", "noopener,noreferrer");
 }; 
@@ -10,11 +12,16 @@ function RestaurantCarousel() {
   const [stores, setStores] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/stores") 
+    // add my geolocation
+    const location = "40.730610,-73.935242"; 
+    const radius = 1500;
+
+
+    fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=latitude,longitude&radius=1500&type=restaurant&key=${apiKey}`)
       .then((response) => response.json())
-      .then((data) => setStores(data))
+      .then((data) => setStores(data.results))
       .catch((error) => console.error("Error fetching stores:", error));
-  }, []);
+  }, [apiKey]);
 
     return (
       <div className="restaurant-carousel">
@@ -22,22 +29,25 @@ function RestaurantCarousel() {
           <h2>Quick and affordable lunches</h2>
           <button className="see-all">See All &gt;</button>
         </div>
-        <div className="carousel">
-          {Object.entries(restaurantData).map(([id, restaurant]) => (
-            <div key={id} className="restaurant-card" onClick={() => openRestaurantTab(id)}>
-              <img src={restaurant.image} alt={restaurant.name} className="restaurant-image" />
-              <div className="restaurant-info">
-                <h3>{restaurant.name}</h3>
-                <p>⭐ {restaurant.rating} ({restaurant.reviews}) • {restaurant.distance} • {restaurant.time}</p>
-                <p>{restaurant.fee}</p>
-                {restaurant.dashPass && <span className="dash-pass">DashPass</span>}
-                {restaurant.deals && <span className="deals">{restaurant.deals}</span>}
-              </div>
-            </div>
-          ))}
 
+
+
+       
+        <div className="carousel">
+        {stores.map((store, index) => (
+          <div key={index} className="restaurant-card" onClick={() => openRestaurantTab(store.place_id)}>
+            <img src={store.photos ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${store.photos[0].photo_reference}&key=${apiKey}` : 'https://via.placeholder.com/400x300'} 
+              alt={store.name} className="restaurant-image" />
+            <div className="restaurant-info">
+              <h3>{store.name}</h3>
+              <p>⭐ {store.rating} • {store.vicinity}</p>
+            </div>
+          </div>
+        ))}
+      </div>
           
-        </div>
+
+  
 
         
         <div className="debug-api">
