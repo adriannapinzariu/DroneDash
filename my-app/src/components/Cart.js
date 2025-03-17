@@ -1,5 +1,6 @@
 import React from "react";
 import "./Cart.css";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const cartItem = {
   name: "H7. Spicy Tuna Poke Bowl (New)",
@@ -16,13 +17,22 @@ const complementaryItems = [
 ];
 
 function Cart({ isCartOpen, toggleCart }) {
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const handlePayment = () => {
+      navigate("/order-tracking");
+    };
+
+    
   return (
     <div className={`cart-container ${isCartOpen ? "open" : ""}`}>
 
-      <button className="cart-close" onClick={toggleCart}>✖</button>
+<button className="cart-close" onClick={toggleCart}>✖</button>
 
       <h3 className="cart-title">Your cart from <span className="cart-restaurant">Poke Burrito</span></h3>
-      <button className="cart-continue">Pay Now</button>
+      <button className="cart-continue" onClick={handlePayment}>Pay Now</button>
 
       <div className="cart-item">
         <img src={cartItem.image} alt={cartItem.name} className="cart-item-image" />

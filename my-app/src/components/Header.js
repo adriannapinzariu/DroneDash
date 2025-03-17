@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faMapMarkerAlt, faBell, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import "./Header.css"; 
@@ -6,6 +7,7 @@ import Cart from "./Cart";
 
 function Header() {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
@@ -14,8 +16,8 @@ function Header() {
   return (
     <>
       <header className="header">
-        <div className="logo">
-          <img src="https://1000logos.net/doordash-logo/" alt="DroneDash" />
+      <div className="logo" onClick={() => navigate("/")}>
+          <img src="/logo.png" alt="DroneDash" />
         </div>
 
         <div className="search-bar">
@@ -44,11 +46,8 @@ function Header() {
         </div>
       </header>
 
-
-      {/* Cart Overlay */}
       <div className={`cart-overlay ${isCartOpen ? "open" : ""}`} onClick={toggleCart}></div>
 
-      {/* Cart Sidebar */}
       <Cart isCartOpen={isCartOpen} toggleCart={toggleCart} />
     </>
 
