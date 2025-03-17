@@ -1,10 +1,16 @@
+import os
+import requests
 from flask import Blueprint, render_template, request
-from backend.models import Delivery, User, Robot, UserRole, RobotStatus, DeliveryStatus
+from backend.models import Store, Product, Delivery, User, Robot, UserRole, RobotStatus, DeliveryStatus
 from flask.json import jsonify
 from . import db
 from datetime import datetime
+from dotenv import load_dotenv
+
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 views = Blueprint('views', __name__)
+
 
 #Home page
 @views.route('/')
@@ -406,3 +412,121 @@ def update_user(user_id):
             'created_at': user.created_at.strftime("%Y-%m-%d %H:%M:%S")
         }
     }), 200
+
+
+
+    # Get All Stores
+    '''
+@views.route('/stores', methods=['GET'])
+def get_stores():
+    stores = Store.query.all()
+    stores_list = [
+        {
+            "id": store.id,
+            "name": store.name,
+            "location": store.location,
+            "image": store.image,
+            "products": [
+                {
+                    "id": product.id,
+                    "name": product.name,
+                    "price": product.price,
+                    "description": product.description,
+                    "image": product.image
+                }
+                for product in store.products
+            ]
+        }
+        for store in stores
+    ]
+    return jsonify(stores_list)'''
+
+# Get Store by ID
+@views.route('/stores/<int:store_id>', methods=['GET'])
+def get_store(store_id):
+    store = Store.query.get(store_id)
+    if not store:
+        return jsonify({"error": "Store not found"}), 404
+
+    store_data = {
+        "id": store.id,
+        "name": store.name,
+        "location": store.location,
+        "image": store.image,
+        "products": [
+            {
+                "id": product.id,
+                "name": product.name,
+                "price": product.price,
+                "description": product.description,
+                "image": product.image
+            }
+            for product in store.products
+        ]
+    }
+    return jsonify(store_data)
+
+# Add a Store
+@views.route('/stores', methods=['POST'])
+def add_store():
+    data = request.get_json()
+    new_store = Store(
+        name=data["name"],
+        location=data["location"],
+        image=data.get("image", "")
+    )
+    db.session.add(new_store)
+    db.session.commit()
+    return jsonify({"message": "Store added successfully!", "store_id": new_store.id}), 201
+
+# Add a Product to a Store
+@views.route('/stores/<int:store_id>/products', methods=['POST'])
+def add_product(store_id):
+    data = request.get_json()
+    new_product = Product(
+        name=data["name"],
+        price=data["price"],
+        description=data.get("description", ""),
+        image=data.get("image", ""),
+        store_id=store_id
+    )
+    db.session.add(new_product)
+    db.session.commit()
+    return jsonify({"message": "Product added successfully!", "product_id": new_product.id}), 201
+
+load_dotenv()
+
+@views.route('/api/stores', methods=['GET'])
+def get_stores():
+    location = request.args.get('location')
+    radius = request.args.get('radius', 1500)
+
+    if not location:
+        return jsonify({"error": "Location parameter required"}), 400
+
+    lat, lng = map(float, location.split(','))
+
+    url = 'https://places.googleapis.com/v1/places:searchNearby'
+    headers = {
+        'Content-Type': 'application/json',
+        'X-Goog-Api-Key': os.getenv("GOOGLE_API_KEY"),
+        'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.location,places.rating,places.photos'
+    }
+    data = {
+        "includedTypes": ["restaurant"],
+        "maxResultCount": 20,
+        "locationRestriction": {
+            "circle": {
+                "center": {"latitude": lat, "longitude": lng},
+                "radius": float(radius)
+            }
+        }
+    }
+
+    response = requests.post(url, headers=headers, json=data)
+    response.raise_for_status()
+
+    return jsonify(response.json())
+
+
+
