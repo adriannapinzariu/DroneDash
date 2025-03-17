@@ -6,6 +6,7 @@ import RestaurantPage from "./store/RestaurantPage";
 import OrderTracking from "./order/OrderTracking";
 import Cart from "./Cart";
 import PaymentPage from "./payment/PaymentPage";
+import RatingPage from "./rating/RatingPage";
 import Header from "./components/Header"; 
 import Sidebar from "./components/Sidebar";
 import "./App.css";
@@ -52,6 +53,7 @@ function App() {
             <Route path="/restaurant/:id" element={<RestaurantPage addToCart={addToCart} />} />
             <Route path="/payment" element={<PaymentPage />} /> 
             <Route path="/order-tracking" element={<OrderTracking />} />
+            <Route path="/rating" element={<RatingPage />} />
             <Route path="/cart" element={
               <Cart 
                 cartItems={cartItems} 
