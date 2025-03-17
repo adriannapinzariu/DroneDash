@@ -5,6 +5,7 @@ import StoreList from "./home/StoreList";
 import RestaurantPage from "./store/RestaurantPage";
 import OrderTracking from "./order/OrderTracking";
 import Cart from "./Cart";
+import PaymentPage from "./payment/PaymentPage";
 import Header from "./components/Header"; 
 import Sidebar from "./components/Sidebar";
 import "./App.css";
@@ -49,6 +50,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/stores" element={<StoreList />} />
             <Route path="/restaurant/:id" element={<RestaurantPage addToCart={addToCart} />} />
+            <Route path="/payment" element={<PaymentPage />} /> 
             <Route path="/order-tracking" element={<OrderTracking />} />
             <Route path="/cart" element={
               <Cart 
