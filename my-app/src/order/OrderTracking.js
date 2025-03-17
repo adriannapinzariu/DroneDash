@@ -4,6 +4,9 @@ import { MapContainer, TileLayer, Marker, Popup, Polyline } from "react-leaflet"
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
+const depaulLocation = [41.8785, -87.6271];
+const deliveryLocation = [41.8843, -87.6324]; 
+
 const deliveryIcon = new L.Icon({
     iconUrl: "https://cdn-icons-png.flaticon.com/512/3203/3203656.png",
     iconSize: [40, 40],
@@ -21,11 +24,11 @@ const deliveryIcon = new L.Icon({
 function OrderTracking() {
 
     useEffect(() => {
-        const map = L.map("map").setView([51.505, -0.09], 13);
+        const map = L.map("map").setView([41.8785, -87.6271], 13);
     
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
     
-        L.marker([51.505, -0.09])
+        L.marker([41.8785, -87.6271])
           .addTo(map)
           .bindPopup("📦 Your order is on the way!")
           .openPopup();
@@ -79,11 +82,7 @@ function OrderTracking() {
           </div>
           <div id="map" className="map-container"></div>
 
-          <iframe
-            className="map-iframe"
-            src="https://www.google.com/maps/embed/v1/directions?key=YOUR_GOOGLE_MAPS_API_KEY&origin=Pickup+Location&destination=Customer+Address"
-            allowFullScreen
-          ></iframe>
+
 
           <div className="eta-box">
             <h3>📍 Dropoff ETA</h3>
