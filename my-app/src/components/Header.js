@@ -23,7 +23,7 @@ function Header() {
 
       <div className="delivery-options">
         <button className="active">Delivery</button>
-        <button>Pickup</button>
+  
       </div>
 
       <div className="icons">

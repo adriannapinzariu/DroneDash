@@ -4,6 +4,7 @@ import { restaurantData } from "../data/restaurants";
 import "./RestaurantPage.css";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
+import FeaturedItems from "./FeaturedItems";
 
 function RestaurantPage() {
   const { id } = useParams();
@@ -102,7 +103,7 @@ function RestaurantPage() {
             </div>   
           </div>
 
-
+          <FeaturedItems />
 
         </div>
       </div>
