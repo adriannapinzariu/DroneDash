@@ -10,11 +10,9 @@ const cartItem = {
 };
 
 const complementaryItems = [
-  { id: 1, name: "Miso Soup", price: "$2.95", image: "https://via.placeholder.com/80" },
-  { id: 2, name: "Milk Tea with Tapioca", price: "$6.45", image: "https://via.placeholder.com/80" },
-  { id: 3, name: "Japanese Spring Rolls", price: "$6.95", image: "https://via.placeholder.com/80" },
-  { id: 4, name: "Smoothie with Popping Boba", price: "$6.95", image: "https://via.placeholder.com/80" },
-  { id: 5, name: "Shrimp Shumai", price: "$8.95", image: "https://via.placeholder.com/80" },
+  { id: 1, name: "Miso Soup", price: "$2.95", image: "/cart/one.jpeg" },
+  { id: 2, name: "Milk Tea with Tapioca", price: "$6.45", image: "/cart/two.jpeg" },
+  { id: 3, name: "Smoothie with Popping Boba", price: "$6.95", image: "/cart/three.jpg" },
 ];
 
 function Cart({ isCartOpen, toggleCart }) {
@@ -26,7 +24,6 @@ function Cart({ isCartOpen, toggleCart }) {
       <h3 className="cart-title">Your cart from <span className="cart-restaurant">Poke Burrito</span></h3>
       <button className="cart-continue">Pay Now</button>
 
-      {/* Cart Item */}
       <div className="cart-item">
         <img src={cartItem.image} alt={cartItem.name} className="cart-item-image" />
         <div className="cart-item-details">
