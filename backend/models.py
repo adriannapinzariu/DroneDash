@@ -72,3 +72,26 @@ class Robot(db.Model):
 
     def __repr__(self):
         return f"<Robot {self.id} - {self.status.value}>"
+
+# Store Model
+class Store(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
+    location = db.Column(db.String(255), nullable=False)
+    image = db.Column(db.String(255), nullable=True)  
+    products = db.relationship('Product', backref='store', lazy=True) 
+
+    def __repr__(self):
+        return f"<Store {self.name}>"
+
+# Product Model
+class Product(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    description = db.Column(db.Text, nullable=True)
+    image = db.Column(db.String(255), nullable=True) 
+    store_id = db.Column(db.Integer, db.ForeignKey('store.id'), nullable=False) 
+
+    def __repr__(self):
+        return f"<Product {self.name}>"

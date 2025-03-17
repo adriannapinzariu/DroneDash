@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request
-from backend.models import Delivery, User, Robot, UserRole, RobotStatus, DeliveryStatus
+from backend.models import Store, Product, Delivery, User, Robot, UserRole, RobotStatus, DeliveryStatus
 from flask.json import jsonify
 from . import db
 from datetime import datetime
@@ -406,3 +406,85 @@ def update_user(user_id):
             'created_at': user.created_at.strftime("%Y-%m-%d %H:%M:%S")
         }
     }), 200
+
+
+
+    # Get All Stores
+@views.route('/stores', methods=['GET'])
+def get_stores():
+    stores = Store.query.all()
+    stores_list = [
+        {
+            "id": store.id,
+            "name": store.name,
+            "location": store.location,
+            "image": store.image,
+            "products": [
+                {
+                    "id": product.id,
+                    "name": product.name,
+                    "price": product.price,
+                    "description": product.description,
+                    "image": product.image
+                }
+                for product in store.products
+            ]
+        }
+        for store in stores
+    ]
+    return jsonify(stores_list)
+
+# Get Store by ID
+@views.route('/stores/<int:store_id>', methods=['GET'])
+def get_store(store_id):
+    store = Store.query.get(store_id)
+    if not store:
+        return jsonify({"error": "Store not found"}), 404
+
+    store_data = {
+        "id": store.id,
+        "name": store.name,
+        "location": store.location,
+        "image": store.image,
+        "products": [
+            {
+                "id": product.id,
+                "name": product.name,
+                "price": product.price,
+                "description": product.description,
+                "image": product.image
+            }
+            for product in store.products
+        ]
+    }
+    return jsonify(store_data)
+
+# Add a Store
+@views.route('/stores', methods=['POST'])
+def add_store():
+    data = request.get_json()
+    new_store = Store(
+        name=data["name"],
+        location=data["location"],
+        image=data.get("image", "")
+    )
+    db.session.add(new_store)
+    db.session.commit()
+    return jsonify({"message": "Store added successfully!", "store_id": new_store.id}), 201
+
+# Add a Product to a Store
+@views.route('/stores/<int:store_id>/products', methods=['POST'])
+def add_product(store_id):
+    data = request.get_json()
+    new_product = Product(
+        name=data["name"],
+        price=data["price"],
+        description=data.get("description", ""),
+        image=data.get("image", ""),
+        store_id=store_id
+    )
+    db.session.add(new_product)
+    db.session.commit()
+    return jsonify({"message": "Product added successfully!", "product_id": new_product.id}), 201
+
+

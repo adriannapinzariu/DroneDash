@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./home/Home";
+import StoreList from "./home/StoreList";
 import RestaurantPage from "./store/RestaurantPage";
 import Cart from "./Cart";
 import Header from "./components/Header"; 
@@ -16,6 +17,7 @@ function App() {
         <div className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/stores" element={<StoreList />} />
           <Route path="/restaurant/:id" element={<RestaurantPage />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
