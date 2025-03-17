@@ -5,7 +5,7 @@ const cartItem = {
   name: "H7. Spicy Tuna Poke Bowl (New)",
   details: "White Rice, Large",
   price: "$17.95",
-  image: "https://via.placeholder.com/80",
+  image: "/food/food4.jpg",
   quantity: 1,
 };
 
@@ -37,6 +37,28 @@ function Cart({ isCartOpen, toggleCart }) {
           <button className="cart-add">+</button>
         </div>
       </div>
+
+{/*
+{cartItems.length === 0 ? (
+        <p className="cart-placeholder">Your cart is empty</p>
+      ) : (
+        <div className="cart-items-list">
+          {cartItems.map((item, index) => (
+            <div key={index} className="cart-item"> 
+              <img src={item.image} alt={item.name} className="cart-item-image" />
+              <div className="cart-item-details">
+                <h4 className="cart-item-name">{item.name}</h4>
+                <p className="cart-item-price">{item.price}</p>
+              </div>
+              <div className="cart-item-actions">
+                <button className="cart-remove" onClick={() => removeFromCart(item.id)}>−</button>
+                <span className="cart-quantity">{item.quantity}</span>
+                <button className="cart-add" onClick={() => addToCart(item)}>+</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}*/}
 
 
       <h4 className="cart-suggestions-title">Complement your cart</h4>

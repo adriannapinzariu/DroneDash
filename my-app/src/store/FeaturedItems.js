@@ -39,10 +39,10 @@ const featuredItems = [
   },
 ];
 
-function FeaturedItems() {
+function FeaturedItems({ addToCart }) {
   return (
     <div className="featured-section">
-
+      <h2 className="featured-title">Featured Items</h2>
       <div className="featured-items-container">
         {featuredItems.map((item) => (
           <div key={item.id} className="featured-item">
@@ -51,6 +51,15 @@ function FeaturedItems() {
             <p className="featured-price">{item.price}</p>
             <p className="featured-rating">👍 {item.rating} {item.reviews}</p>
             {item.rank && <span className="featured-rank">{item.rank}</span>}
+
+            <button
+            className="add-to-cart-btn"
+            onClick={() => {
+                addToCart(item);
+            }}
+            >
+            + Add to Cart
+            </button>
           </div>
         ))}
       </div>
