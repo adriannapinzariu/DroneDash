@@ -22,7 +22,7 @@ function Cart({ isCartOpen, toggleCart }) {
     const location = useLocation();
 
     const handlePayment = () => {
-      navigate("/order-tracking");
+      navigate("/payment");
     };
 
     

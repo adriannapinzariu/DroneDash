@@ -5,9 +5,13 @@ import StoreList from "./home/StoreList";
 import RestaurantPage from "./store/RestaurantPage";
 import OrderTracking from "./order/OrderTracking";
 import Cart from "./Cart";
+import PaymentPage from "./payment/PaymentPage";
+import RatingPage from "./rating/RatingPage";
 import Header from "./components/Header"; 
 import Sidebar from "./components/Sidebar";
+import DashBot from "./dashbot/Dashbot";
 import "./App.css";
+
 
 function App() {
   const [cartItems, setCartItems] = useState([]); 
@@ -49,7 +53,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/stores" element={<StoreList />} />
             <Route path="/restaurant/:id" element={<RestaurantPage addToCart={addToCart} />} />
+            <Route path="/payment" element={<PaymentPage />} /> 
             <Route path="/order-tracking" element={<OrderTracking />} />
+            <Route path="/rating" element={<RatingPage />} />
             <Route path="/cart" element={
               <Cart 
                 cartItems={cartItems} 
@@ -62,6 +68,7 @@ function App() {
           </Routes>
         </div>
       </div>
+      <DashBot />
     </Router>
   );
 }

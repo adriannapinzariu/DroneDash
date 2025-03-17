@@ -71,7 +71,7 @@ export const restaurantData = {
     deals: "10% off all orders above $50",
     dashPass: true,
     friendlyTags: ["Hot Pot", "Spicy"],
-    image: "/food_4.avif",
+    image: "/food_4.jpg",
     logo: "/hotpot_logo.png",
   },
 
@@ -90,7 +90,7 @@ export const restaurantData = {
     deals: "Buy one bowl, get one free",
     dashPass: true,
     friendlyTags: ["Burritos", "Healthy"],
-    image: "/food_5.avif",
+    image: "/food_5.jpeg",
     logo: "/chipotle_logo.png",
   },
 
@@ -109,7 +109,7 @@ export const restaurantData = {
     deals: "Earn double stars with mobile orders",
     dashPass: false,
     friendlyTags: ["Coffee", "Bakery"],
-    image: "/food_6.avif",
+    image: "/food_6.jpg",
     logo: "/starbucks_logo.png",
   },
 
@@ -128,7 +128,7 @@ export const restaurantData = {
     deals: "Free coffee with purchase of a dozen donuts",
     dashPass: false,
     friendlyTags: ["Donuts", "Breakfast"],
-    image: "/food_7.avif",
+    image: "/food_7.webp",
     logo: "/dunkin_logo.png",
   },
 
@@ -147,7 +147,7 @@ export const restaurantData = {
     deals: "Free large fries with purchase of two burgers",
     dashPass: true,
     friendlyTags: ["Burgers", "Fries"],
-    image: "/food_8.avif",
+    image: "/food_8.jpg",
     logo: "/fiveguys_logo.png",
   },
 
@@ -166,7 +166,7 @@ export const restaurantData = {
     deals: "Family meal deal for $25",
     dashPass: true,
     friendlyTags: ["Orange Chicken", "Fast Food"],
-    image: "/food_9.avif",
+    image: "/food_9.jpg",
     logo: "/pandaexpress_logo.png",
   },
 
@@ -185,7 +185,7 @@ export const restaurantData = {
     deals: "Buy one footlong, get another 50% off",
     dashPass: true,
     friendlyTags: ["Healthy", "Subs"],
-    image: "/food_10.avif",
+    image: "/food_10.jpeg",
     logo: "/subway_logo.png",
   },
 
@@ -204,7 +204,7 @@ export const restaurantData = {
     deals: "2 for $5 Big Macs",
     dashPass: false,
     friendlyTags: ["Burgers", "Fries"],
-    image: "/food_11.avif",
+    image: "/food_11.jpg",
     logo: "/mcdonalds_logo.png",
   },
 
@@ -223,7 +223,7 @@ export const restaurantData = {
     deals: "Free Frosty with any combo meal",
     dashPass: false,
     friendlyTags: ["Burgers", "Salads"],
-    image: "/food_12.avif",
+    image: "/food_12.jpeg",
     logo: "/wendys_logo.png",
   }
 };

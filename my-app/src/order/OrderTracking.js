@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "./OrderTracking.css";
+import { useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -19,9 +20,12 @@ const deliveryIcon = new L.Icon({
     iconAnchor: [20, 40],
   });
 
-  
+ 
+
 
 function OrderTracking() {
+
+  const navigate = useNavigate(); 
 
     useEffect(() => {
         const map = L.map("map").setView([41.8785, -87.6271], 13);
@@ -37,6 +41,10 @@ function OrderTracking() {
           map.remove();
         };
       }, []);
+
+      const handleFinishOrder = () => {
+        navigate("/rating"); 
+    };
 
   return (
     <div className="order-tracking-page">
@@ -88,6 +96,12 @@ function OrderTracking() {
             <h3>📍 Dropoff ETA</h3>
             <p>12:54 PM</p>
           </div>
+
+          <button className="finish-order-btn" onClick={handleFinishOrder}>
+                        ✅ Finish Order & Rate Delivery
+          </button>
+
+
         </div>
       </div>
     </div>
