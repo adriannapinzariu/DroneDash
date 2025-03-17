@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faMapMarkerAlt, faBell, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import "./Header.css"; 
-import Cart from "./Cart"; // Import Cart Component
+import Cart from "./Cart"; 
 
 function Header() {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -37,22 +37,21 @@ function Header() {
             <FontAwesomeIcon icon={faBell} />
             <span className="badge">4</span>
           </div>
-          <div className="cart" onClick={toggleCart}> {/* Click to Open Cart */}
+          <div className="cart" onClick={toggleCart}>
             <FontAwesomeIcon icon={faShoppingCart} />
             <span className="cart-badge">0</span>
           </div>
         </div>
       </header>
 
-      {/* Cart Slide-In Panel */}
-      <div className={`cart-sidebar ${isCartOpen ? "open" : ""}`}>
-        <div className="cart-overlay" onClick={toggleCart}></div>
-        <div className="cart-content">
-          <button className="cart-close" onClick={toggleCart}>✖</button>
-          <Cart />  {/* Render Cart Here */}
-        </div>
-      </div>
+
+      {/* Cart Overlay */}
+      <div className={`cart-overlay ${isCartOpen ? "open" : ""}`} onClick={toggleCart}></div>
+
+      {/* Cart Sidebar */}
+      <Cart isCartOpen={isCartOpen} toggleCart={toggleCart} />
     </>
+
   );
 }
 

@@ -5,23 +5,25 @@ const cartItem = {
   name: "H7. Spicy Tuna Poke Bowl (New)",
   details: "White Rice, Large",
   price: "$17.95",
-  image: "your-cart-item-image-url",
+  image: "https://via.placeholder.com/80",
   quantity: 1,
 };
 
 const complementaryItems = [
-  { id: 1, name: "Miso Soup", price: "$2.95", image: "your-image-url-1" },
-  { id: 2, name: "Milk Tea with Tapioca", price: "$6.45", image: "your-image-url-2" },
-  { id: 3, name: "Japanese Spring Rolls", price: "$6.95", image: "your-image-url-3" },
-  { id: 4, name: "Smoothie with Popping Boba", price: "$6.95", image: "your-image-url-4" },
-  { id: 5, name: "Shrimp Shumai", price: "$8.95", image: "your-image-url-5" },
+  { id: 1, name: "Miso Soup", price: "$2.95", image: "https://via.placeholder.com/80" },
+  { id: 2, name: "Milk Tea with Tapioca", price: "$6.45", image: "https://via.placeholder.com/80" },
+  { id: 3, name: "Japanese Spring Rolls", price: "$6.95", image: "https://via.placeholder.com/80" },
+  { id: 4, name: "Smoothie with Popping Boba", price: "$6.95", image: "https://via.placeholder.com/80" },
+  { id: 5, name: "Shrimp Shumai", price: "$8.95", image: "https://via.placeholder.com/80" },
 ];
 
-function Cart() {
+function Cart({ isCartOpen, toggleCart }) {
   return (
-    <div className="cart-container">
-      <h3 className="cart-title">Your cart from <span 
-      className="cart-restaurant">Poke Burrito</span></h3>
+    <div className={`cart-container ${isCartOpen ? "open" : ""}`}>
+
+      <button className="cart-close" onClick={toggleCart}>✖</button>
+
+      <h3 className="cart-title">Your cart from <span className="cart-restaurant">Poke Burrito</span></h3>
       <button className="cart-continue">Pay Now</button>
 
       {/* Cart Item */}
@@ -38,6 +40,7 @@ function Cart() {
           <button className="cart-add">+</button>
         </div>
       </div>
+
 
       <h4 className="cart-suggestions-title">Complement your cart</h4>
       <div className="cart-suggestions">
