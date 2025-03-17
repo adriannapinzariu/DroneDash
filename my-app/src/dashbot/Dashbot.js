@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./DashBot.css";
+import "./Dashbot.css";
 
 const DashBot = () => {
   const [messages, setMessages] = useState([{ text: "Hi! How can I assist you today?", sender: "bot" }]);

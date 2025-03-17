@@ -9,7 +9,9 @@ import PaymentPage from "./payment/PaymentPage";
 import RatingPage from "./rating/RatingPage";
 import Header from "./components/Header"; 
 import Sidebar from "./components/Sidebar";
+import DashBot from "./dashbot/Dashbot";
 import "./App.css";
+
 
 function App() {
   const [cartItems, setCartItems] = useState([]); 
@@ -66,6 +68,7 @@ function App() {
           </Routes>
         </div>
       </div>
+      <DashBot />
     </Router>
   );
 }
