@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { restaurantData } from "../data/restaurants";
 import "./RestaurantCarousel.css";
 
@@ -7,6 +7,15 @@ const openRestaurantTab = (id) => {
 }; 
 
 function RestaurantCarousel() {
+  const [stores, setStores] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/stores") 
+      .then((response) => response.json())
+      .then((data) => setStores(data))
+      .catch((error) => console.error("Error fetching stores:", error));
+  }, []);
+
     return (
       <div className="restaurant-carousel">
         <div className="carousel-header">
@@ -26,8 +35,18 @@ function RestaurantCarousel() {
               </div>
             </div>
           ))}
+
+          
         </div>
+
+        
+        <div className="debug-api">
+        <h3>Fetched Stores Data (Debugging)</h3>
+        <pre>{JSON.stringify(stores, null, 2)}</pre>
       </div>
+    </div>
+
+      
     );
   }
 
