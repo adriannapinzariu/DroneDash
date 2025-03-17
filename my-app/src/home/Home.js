@@ -12,9 +12,7 @@ import "./Home.css";
 function Home() {
   return (
     <div className="home-container">
-      <Header /> 
       <div className="content-container">
-        <Sidebar /> 
         <div className="main-content">
           <CategoryBar />
           <FilterBar />

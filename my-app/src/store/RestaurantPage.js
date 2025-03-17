@@ -15,10 +15,8 @@ function RestaurantPage() {
 
   return (
     <div className="page-container">
-      <Header />
 
       <div className="content-layout">
-        <Sidebar />
 
         <div className="restaurant-page">
         
