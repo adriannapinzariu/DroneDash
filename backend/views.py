@@ -1,10 +1,16 @@
+import os
+import requests
 from flask import Blueprint, render_template, request
 from backend.models import Store, Product, Delivery, User, Robot, UserRole, RobotStatus, DeliveryStatus
 from flask.json import jsonify
 from . import db
 from datetime import datetime
+from dotenv import load_dotenv
+
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 views = Blueprint('views', __name__)
+
 
 #Home page
 @views.route('/')
@@ -410,6 +416,7 @@ def update_user(user_id):
 
 
     # Get All Stores
+    '''
 @views.route('/stores', methods=['GET'])
 def get_stores():
     stores = Store.query.all()
@@ -432,7 +439,7 @@ def get_stores():
         }
         for store in stores
     ]
-    return jsonify(stores_list)
+    return jsonify(stores_list)'''
 
 # Get Store by ID
 @views.route('/stores/<int:store_id>', methods=['GET'])
@@ -486,5 +493,40 @@ def add_product(store_id):
     db.session.add(new_product)
     db.session.commit()
     return jsonify({"message": "Product added successfully!", "product_id": new_product.id}), 201
+
+load_dotenv()
+
+@views.route('/api/stores', methods=['GET'])
+def get_stores():
+    location = request.args.get('location')
+    radius = request.args.get('radius', 1500)
+
+    if not location:
+        return jsonify({"error": "Location parameter required"}), 400
+
+    lat, lng = map(float, location.split(','))
+
+    url = 'https://places.googleapis.com/v1/places:searchNearby'
+    headers = {
+        'Content-Type': 'application/json',
+        'X-Goog-Api-Key': os.getenv("GOOGLE_API_KEY"),
+        'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.location,places.rating,places.photos'
+    }
+    data = {
+        "includedTypes": ["restaurant"],
+        "maxResultCount": 20,
+        "locationRestriction": {
+            "circle": {
+                "center": {"latitude": lat, "longitude": lng},
+                "radius": float(radius)
+            }
+        }
+    }
+
+    response = requests.post(url, headers=headers, json=data)
+    response.raise_for_status()
+
+    return jsonify(response.json())
+
 
 
