@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./home/Home";
 import StoreList from "./home/StoreList";
 import RestaurantPage from "./store/RestaurantPage";
+import OrderTracking from "./order/OrderTracking";
 import Cart from "./Cart";
 import Header from "./components/Header"; 
 import Sidebar from "./components/Sidebar";
@@ -48,6 +49,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/stores" element={<StoreList />} />
             <Route path="/restaurant/:id" element={<RestaurantPage addToCart={addToCart} />} />
+            <Route path="/order-tracking" element={<OrderTracking />} />
             <Route path="/cart" element={
               <Cart 
                 cartItems={cartItems} 
